@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "412797249394",
+    "firebase_url": "https://comtkfirebasetest.firebaseio.com",
+    "project_id": "comtkfirebasetest",
+    "storage_bucket": "comtkfirebasetest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412797249394:android:d5a262ecd4bdb559",
+        "android_client_info": {
+          "package_name": "com.tk.firebasetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412797249394-nlji3ijtkf9at9m6pgr31t70smn951fe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw28J5Sq7wdlCf581EfWM7dskV2NDTmwM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
