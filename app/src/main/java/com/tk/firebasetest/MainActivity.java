@@ -15,6 +15,9 @@ import android.widget.ImageView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView imgSave;
     private StorageReference spaceRef;
     private Button btnStorageLoad;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +74,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initData();
         initView();
 
+        initAdmob();
+
+    }
+
+    private void initAdmob() {
+        //appId
+        MobileAds.initialize(this,"ca-app-pub-3623750925050026~6229625729");
+
+        adView = findViewById(R.id.advTest);
+        //use Google test adUnitId on debug mode :ca-app-pub-3940256099942544/6300978111
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("2362233B2C9869A780B2605910EBD5FA")
+                .build();
+        adView.loadAd(adRequest);
+
+        Log.d(TAG,"is TestDevice:"+adRequest.isTestDevice(this));
     }
 
     private void initView() {
