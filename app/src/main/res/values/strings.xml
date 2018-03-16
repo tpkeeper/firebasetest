@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">firebasetest</string>
+    <string name="com.appsee.apikey" translatable="false">4dc0754c226446e49a9cc208a4df5d03</string>
 </resources>

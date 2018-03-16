@@ -13,6 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.appsee.Appsee;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.LoginEvent;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.ads.AdRequest;
@@ -38,6 +42,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import io.fabric.sdk.android.Fabric;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -70,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
+        Appsee.start(getString(R.string.com_appsee_apikey));
         setContentView(R.layout.activity_main);
         initData();
         initView();
@@ -219,13 +226,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnWrite:
+                int i = 1/0;
                 mDatabase.child("test").child("testChild").setValue(edtData.getText().toString());
                 break;
             case R.id.btnRead:
                 edtData.setText("read:"+data);
                 break;
             case R.id.btnLogin:
-
+                Answers.getInstance().logLogin(new LoginEvent());
 // Choose authentication providers
                 List<AuthUI.IdpConfig> providers = Arrays.asList(
                         new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build());
