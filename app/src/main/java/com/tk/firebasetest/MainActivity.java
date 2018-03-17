@@ -12,11 +12,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.appsee.Appsee;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.LoginEvent;
+import com.facebook.ads.AdSettings;
+import com.facebook.ads.AdSize;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.ads.AdRequest;
@@ -71,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private StorageReference spaceRef;
     private Button btnStorageLoad;
     private AdView adView;
+    private LinearLayout linFacebookAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +114,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnStorageSave = findViewById(R.id.btnStorageSave);
         imgSave = findViewById(R.id.imgSave);
         btnStorageLoad = findViewById(R.id.btnStorageLoad);
+        linFacebookAd = findViewById(R.id.linFacebookAd);
+
+        com.facebook.ads.AdView adView = new com.facebook.
+                ads.AdView(this,"368462233626267_368740620265095", AdSize.BANNER_HEIGHT_50);
+        AdSettings.addTestDevice("943a1155-c94a-4223-8b61-67e655b4d969");
+        linFacebookAd.addView(adView);
 
 
+
+        adView.loadAd();
 
 
         btnWrite.setOnClickListener(this);
@@ -141,6 +153,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mDatabase = FirebaseDatabase.getInstance().getReference();
         db = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
+
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
@@ -349,5 +363,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d(TAG,"download url :"+downloadUrl);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (adView!=null){
+            adView.destroy();
+        }
+        super.onDestroy();
     }
 }

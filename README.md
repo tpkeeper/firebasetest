@@ -5,5 +5,6 @@ firebase test include
 * Storage
 * authentication
 * admob
-* fabric
+* fabric sdk
+* facebook sdk
 

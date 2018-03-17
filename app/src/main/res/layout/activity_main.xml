@@ -71,4 +71,9 @@
         android:layout_width="80dp"
         android:background="@mipmap/ic_launcher"
         android:layout_height="80dp" />
+    <LinearLayout
+        android:id="@+id/linFacebookAd"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"></LinearLayout>
 </LinearLayout>
